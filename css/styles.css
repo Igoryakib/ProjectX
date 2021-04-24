@@ -1,0 +1,105 @@
+@import url('./reset.css');
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../img/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.wrapper__root__wrapper__cards {
+    width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: -20px;
+}
+
+.root__wrapper__cards__card {
+    perspective: 500px;
+    width: 140px;
+    height: 220px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.root__wrapper__cards__card__content {
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.root__wrapper__cards__card__content__frontSide {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility:hidden;
+    transform: rotateY( 180deg );
+    border-radius: 5px;
+    border: 2px solid #fff;
+}
+
+.root__wrapper__cards__card__content__backSide {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility:hidden;
+    border-radius: 5px;
+    border: 2px solid #fff;
+}
+
+.rotate--card {
+    transform: rotateY( 180deg ) ;
+    transition: transform 0.5s;
+}
+
+.wrapper__music {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background_music {
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    transition: linear 200ms;
+    position: absolute;
+}
+
+.background_music_muted {
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: linear 200ms;
+    position: absolute;
+}
+
+.show_icon {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
+}
+
+.close_icon {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
