@@ -21,6 +21,7 @@
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: -20px;
+    pointer-events: none;
 }
 
 .root__wrapper__cards__card {
@@ -29,6 +30,7 @@
     height: 220px;
     margin-bottom: 20px;
     cursor: pointer;
+    pointer-events: initial;
 }
 
 .root__wrapper__cards__card__content {
@@ -63,8 +65,6 @@
 }
 
 .wrapper__music {
-    width: 100px;
-    height: 100px;
     position: absolute;
     top: 5%;
     left: 5%;
@@ -79,6 +79,7 @@
     cursor: pointer;
     transition: linear 200ms;
     position: absolute;
+    margin-left: -110px;
 }
 
 .background_music_muted {
@@ -90,6 +91,7 @@
     visibility: hidden;
     transition: linear 200ms;
     position: absolute;
+    margin-left: -110px;
 }
 
 .show_icon {
@@ -102,4 +104,18 @@
     opacity: 0;
     pointer-events: none;
     visibility: hidden;
+}
+
+#volume_level {
+    margin-left: 110px;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: linear 200ms;
+}
+
+.wrapper__music:hover #volume_level {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
 }
