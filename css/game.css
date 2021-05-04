@@ -119,3 +119,7 @@
     visibility: visible;
     pointer-events: initial;
 }
+
+.pointer0 {
+    pointer-events: none;
+}
