@@ -35,7 +35,7 @@ const onClick = (event) => {
 const playMusic = () => {
     musicRef.currentTime = 0;
     musicRef.play();
-    musicRef.volume = 0.2;
+    musicRef.volume = 0.28;
     volumeRangeRef.value = 20;
 };
 
@@ -54,7 +54,7 @@ const getRangeVolume = () => {
     }
 
 };
-// playMusic()
+playMusic()
 divWrapperRef.addEventListener('click', onClick);
 // window.addEventListener('load', playMusic);
 volumeRangeRef.addEventListener('input', getRangeVolume);
