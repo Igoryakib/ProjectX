@@ -6,27 +6,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/game.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
+    <main class="game_main">
 
+        <section class="wrapper">
+            <div class="wrapper__music">
+                <input id="volume_level" type="range" />
+                <audio class="audio_Effect" src="./music/dver.mp3"></audio>
+                <audio class="music" src="./music/mainMusic.mp3" loop></audio>
+                <audio class='correct_audio' src="./music/correct.mp3"></audio>
+                <audio class="in_correct" src="./music/inCorrect.mp3"></audio>
+                <audio class="endGame" src="./music/alarm_emergencymeeting.mp3"></audio>
+            </div>
+            <div class="wrapper_timer">
+                <div class="wrapper_clock">
+                    <span class="mins time">00 :</span>
+                    <span class="secs time">00</span>
+                </div>
+            </div>
+            <div class="wrapper__root__wrapper__cards">
 
-    <section class="wrapper">
-        <div class="wrapper__music">
-            <input id="volume_level" type="range" />
-            <audio class="audio_Effect" src="./Music/dver.mp3"></audio>
-            <audio class="music" src="./Music/mainMusic.mp3" loop></audio>
-            <audio  class='correct_audio' src="./music/correct.mp3"></audio>
-            <audio class="in_correct" src="./music/inCorrect.mp3"></audio>
+            </div>
+
+        </section>
+
+        <div id="myModal" class="modal">
+            <div class="modal_content">
+                <!-- <video class="video" preload="auto" src="./video/video.mp4"></video> -->
+                <video class="video">
+                    <source src="./video/video.mp4" type="video/mp4">
+                </video>
+                <div class="btn_box">
+                    <button class="btn">Try Again</button>
+                    <button class="btn">Main Menu</button>
+                </div>
+            </div>
         </div>
-        <div class="wrapper__root__wrapper__cards">
-
-        </div>
-    </section>
-
+    </main>
     <script src="./js/game.js" type="module"></script>
-    <script src="./js/music.js" type="module"></script>
 </body>
 
 </html>

@@ -12,6 +12,7 @@
     align-items: center;
     position: relative;
     pointer-events: none;
+    position: absolute;
 }
 
 .wrapper__root__wrapper__cards {
@@ -126,4 +127,30 @@
 
 .pointer0 {
     pointer-events: none;
+}
+
+.wrapper_timer {
+    width: 175px;
+    margin: 0 auto;
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #fff;
+}
+
+.wrapper_clock {
+    width: 80px;
+    margin: 0 auto;
+}
+
+.time {
+    font-size: 25px;
+    color: #fff;
+}
+
+.game_main {
+    position: relative;
 }
