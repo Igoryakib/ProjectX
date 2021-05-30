@@ -5,16 +5,75 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Brawl-Stars-Cards</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
     <main class="game_main">
+                <!-- !!!!!!!!!!MainScreen!!!!!!!! -->
+        <section class="main">
+            <div class="main_title_wrapper">
+                <h2 class="main_title among_title"> Among </h2>
+                <h1 class="main_title us_title"> US </h1>
+                <h3 class="main_title cards_title"> Cards </h3>
+            </div>
+            
+            <div class="backdrop">
+                <div class="modal">
+                    <h4 class="h2_modal_title">
+                        About game
+                    </h4>
+                    <p class="p_modal_text">
+                        Among Us is a multiplayer game where between four and 10 players are dropped onto an alien
+                        spaceship.
+                        Among us Cards its parody of original game where you must find all similar cards,but hurry up
+                        because you have limited time.
+                    </p>
+                    <div class="image_wrapper_modal">
+                        <img src="./img/photo1.jpg" class="image_modal" alt="image_modal">
+                        <img src="./img/photo2.jpg" alt="image_modal" class="image_modal">
+                    </div>
+                </div>
+                <button type="button" class="lightbox__button"><button>
+            </div>
+    
+            <div class="backdrop_about_us">
+                <div class="modal_about_us">
+                    <h4 class="h2_modal_title">
+                        About team
+                    </h4>
+                    <p class="p_modal_text_2">
+                        Our team include 4 people, who wrote this game.
+                        Developers:
+                        ник,
+                        Igoryakib,
+                        NeZlamnyy,
+                        F1akezzz.
+                        This project has written during one month.
+                        <br>
+                        By BETA team ©
+                     </p>
+    
+                </div>
+                <button type="button" class="lightbox__button  button_close2"><button>
+            </div>
+    
+            <div class="div_button">
+                <button class="start button">New game</button>
+                <button class="about_game button">About game</button>
+                <button class="about_us button">About us</button>
+                <button class="exit button">Exit</button>
+            </div>
+            <!-- <button class="testbtn">hggjghjg</button> -->
+        </section>
+
+            <!-- !!!!!!!!GAme!!!!!!!!!! -->
 
         <section class="wrapper">
             <div class="wrapper__music">
-                <input id="volume_level" type="range" />
+                <input id="volume_level" type="range"/>
+                <audio class="BackMusic" src="./music/backgroundMusic.mp3" loop></audio>
                 <audio class="audio_Effect" src="./music/dver.mp3"></audio>
                 <audio class="music" src="./music/mainMusic.mp3" loop></audio>
                 <audio class='correct_audio' src="./music/correct.mp3"></audio>
@@ -27,25 +86,31 @@
                     <span class="secs time">00</span>
                 </div>
             </div>
+            <button class="exit_btn">
+                <img class="img_exit" src="./img/exit.png" alt="exit">
+            </button>
             <div class="wrapper__root__wrapper__cards">
 
             </div>
 
         </section>
 
-        <div id="myModal" class="modal">
+        <!-- !!!!!!!!!!!!!EndGame modal!!!!!!!!!!!!1 -->
+
+        <div id="myModal" class="modalEndGame">
             <div class="modal_content">
                 <!-- <video class="video" preload="auto" src="./video/video.mp4"></video> -->
                 <video class="video">
                     <source src="./video/video.mp4" type="video/mp4">
                 </video>
                 <div class="btn_box">
-                    <button class="btn">Try Again</button>
-                    <button class="btn">Main Menu</button>
+                    <button class="btn again">Try Again</button>
+                    <button class="btn menu">Main Menu</button>
                 </div>
             </div>
         </div>
     </main>
+    <script src="./js/mainScreen.js" type="module"></script>
     <script src="./js/game.js" type="module"></script>
 </body>
 

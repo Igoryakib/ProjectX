@@ -42,7 +42,7 @@
     transition: 650ms;
 }
 
-.modal {
+.modalEndGame {
     position: relative;
     display: flex;
     width: 100vw;
@@ -77,5 +77,6 @@
     opacity: 1;
     visibility: visible;
     pointer-events: initial;
+    z-index: 99;
     transition: linear 500ms;
 }

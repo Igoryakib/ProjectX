@@ -1,0 +1,292 @@
+@import "./reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat&family=Raleway&family=Roboto&family=Shadows+Into+Light&display=swap');
+@font-face {
+    font-family: "AmongUs";
+    src: url(../fonts/AmongUs-Regular.ttf)
+    format("truetype");
+    font-weight: normal;
+}
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Shadows+Into+Light&display=swap');
+
+.main{
+ width: 100vw;
+ height: 100vh;
+ background-image: url("../img/main.jpg");
+ background-size: cover;
+ background-position: center;
+ display: flex;
+ justify-content: center;
+ margin: 0 auto;
+ align-items: center;
+ position: absolute;
+ z-index: 99;
+}
+.main_title_wrapper{
+    width: 309px;
+    display: block;
+    text-align: center;
+    margin-bottom: 60px;
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -5%);  
+    animation: appearTitle 3s linear 1s;
+    opacity: 0;
+}
+
+@keyframes appearTitle {
+    0%{
+      position: absolute;
+      top: -30%;
+      opacity: 0;
+    }
+    50%{
+      top: 3%;
+      opacity: 1;
+    }
+    100%{
+      top: 5%;
+      position: fixed;
+      left: 50%;
+      transform: translate(-50%, -5%); 
+      opacity: 1;
+    }
+}
+
+
+
+.main_title{
+    font-family: "AmongUs";
+    font-weight: 700;
+    font-size:70px;
+    text-transform: uppercase;
+    animation: lightUpText 5s linear 4s infinite;
+    
+}
+
+@keyframes lightUpText {
+    0%{
+        text-shadow: 5px 0px 15px rgba(255, 255, 255, 1);
+        
+    }
+    25%{
+        text-shadow: 5px 0px 10px rgba(255, 255, 255, 1);
+    }
+    50%{
+        text-shadow: 5px 0px 5px rgba(255, 255, 255, 1);
+    }
+    75%{
+        text-shadow: 5px 0px 5px rgba(255, 255, 255, 1);
+    }
+    100%{
+        text-shadow: 5px 0px 14px rgba(255, 255, 255, 1); 
+    } 
+}
+
+.among_title{
+  color: rgb(4, 195, 4);
+  font-family: "AmongUs";
+}
+.us_title{
+    color: purple;
+    font-family: "AmongUs";
+}
+.cards_title{
+    color: red;
+    font-family: "AmongUs";
+}
+.div_button{
+    margin: 0 auto;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 100px;
+}
+.div_button:last-child{
+    margin-bottom: 0;
+}
+.start:hover{
+    padding: 7.25px 25px;
+}
+.about_game:hover{
+    padding: 7.25px 25px;
+}
+.about_us:hover{
+    padding: 7.25px 25px;
+}
+.exit:hover{
+    padding: 7.25px 25px;
+}
+.button{
+    margin-bottom: 20px;
+    padding: 14.5px 50px;
+    font-size: 35px;
+    border-radius: 20px;
+    border: 2px solid white;
+    color: white;
+    font-family: 'Lobster', cursive;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Shadows Into Light', cursive;
+    transition: linear 200ms;
+    cursor: pointer;
+}
+.start{
+  background: rgb(95,251,63);
+  background: radial-gradient(circle, rgba(95,251,63,1) 58%, rgba(153,252,70,1) 77%);
+}
+.about_game{
+    background: rgb(239,63,251);
+    background: radial-gradient(circle, rgba(239,63,251,1) 58%, rgba(207,70,252,1) 77%);
+}
+.about_us{
+    background: rgb(251,179,63);
+    background: radial-gradient(circle, rgba(251,179,63,1) 58%, rgba(252,152,70,1) 77%);
+}
+.exit{
+    background: rgb(251,63,63);
+    background: radial-gradient(circle, rgba(251,63,63,1) 58%, rgba(252,85,70,1) 77%);
+}
+.backdrop{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(218,177,177);
+background: radial-gradient(circle, rgba(218,177,177,0) 3%, rgba(156,156,156,0.639093137254902) 93%);      
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+}
+.backdrop_about_us{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(218,177,177);
+background: radial-gradient(circle, rgba(218,177,177,0) 3%, rgba(156,156,156,0.639093137254902) 93%);    
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+}
+.modal{
+    width: 1000px;
+    height: 600px;
+    border-radius: 50px;
+    padding: 24px;
+    transform: scale(1.1);
+    transition: transform 208ms ease-in-out;
+    background: rgb(184,115,230);
+background: linear-gradient(90deg, rgba(184,115,230,1) 0%, rgba(237,87,87,1) 50%, rgba(205,153,80,1) 100%);
+    margin: 0 auto  ;
+    border: 2px solid white;
+}
+.modal_about_us{
+    width: 1000px;
+    height: 600px;
+    border-radius: 50px;
+    padding: 24px;
+    transform: scale(1.1);
+    transition: transform 208ms ease-in-out;
+    background: rgb(255,145,0);
+background: linear-gradient(90deg, rgba(255,145,0,1) 0%, rgba(87,213,237,1) 50%, rgba(0,255,55,1) 100%);
+    margin: 0 auto  ;
+    border: 2px solid white;
+}
+.showModal{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
+}
+.lightbox__button{
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        margin: 0;
+        border: none;
+        border-radius: 50%;
+        background-color: transparent;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color var(--animation-duration) var(--timing-function);
+        outline: none;
+        background-image: url('../img/icon-close.svg');
+        background-position: center;
+        background-size: 60%;
+        background-repeat: no-repeat
+}
+.lightbox__button:hover,
+.lightbox__button:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.h2_modal_title{
+    font-family: 'Newsreader', serif;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 45px;
+    color: rgb(31, 31, 31);
+    font-weight: 700;
+}
+.p_modal_text{
+    padding: 0 200px;
+    text-align: center;
+    font-family: 'Mountains of Christmas', cursive;
+    font-size: 25px;
+    color: #333;
+    font-weight: 400;
+
+} 
+.p_modal_text_2{
+        padding: 0 200px;
+        text-align: center;
+        font-family: 'Indie Flower', cursive;
+        font-size: 30px  ;
+        color: #333;
+        font-weight: 400; 
+        
+}
+.image_modal{
+    width: 450px;
+    height: auto;
+    margin: 0 auto;
+    margin-right: 10px;
+    border-radius: 25px;
+}
+.image_wrapper_modal{
+    width: 700px;
+    display: flex;
+    margin: 15px;
+    justify-content: space-between ;
+}
+
+
+
+
+
+
+
+

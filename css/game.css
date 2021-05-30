@@ -13,6 +13,8 @@
     position: relative;
     pointer-events: none;
     position: absolute;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .wrapper__root__wrapper__cards {
@@ -24,6 +26,7 @@
     flex-wrap: wrap;
     margin-bottom: -20px;
     transition: linear 200ms;
+    pointer-events: none;
 }
 
 .root__wrapper__cards__card {
@@ -101,6 +104,7 @@
     opacity: 1;
     visibility: visible;
     pointer-events: initial;
+    z-index: 99;
     transition: linear 200ms;
 }
 
@@ -108,6 +112,7 @@
     opacity: 0;
     pointer-events: none;
     visibility: hidden;
+    z-index: 1;
     transition: linear 200ms;
 }
 
@@ -117,6 +122,7 @@
     pointer-events: none;
     visibility: hidden;
     transition: linear 200ms;
+    cursor: pointer;
 }
 
 .wrapper__music:hover #volume_level {
@@ -133,7 +139,7 @@
     width: 175px;
     margin: 0 auto;
     position: absolute;
-    top: 5%;
+    top: 8%;
     right: 10%;
     display: flex;
     justify-content: center;
@@ -153,4 +159,25 @@
 
 .game_main {
     position: relative;
+}
+
+.testbtn {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.exit_btn {
+    width: 50px;
+    height: auto;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    cursor: pointer;
+}
+
+.img_exit {
+    width: 50px;
+    height: auto;
 }

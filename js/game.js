@@ -1,6 +1,8 @@
 // !!!!!!!!!Const Variable!!!!!!!!!
 import arrayCards from "./arrayCards.js";
 
+import doubleArrayCards from "./arrayCards.js";
+
 const divWrapperRef = document.querySelector('.wrapper__music');
 
 const musicRef = document.querySelector('.music');
@@ -43,11 +45,28 @@ const secRef = document.querySelector('.secs');
 
 const endTimeRef = document.querySelector('.endGame');
 
-const modalEndGameRef = document.querySelector('.modal');
+const modalEndGameRef = document.querySelector('.modalEndGame');
 
 const modalVideoRef = document.querySelector('.video');
 
 const boxButtonsRef = document.querySelector(".btn_box");
+
+const startGameBtnRef = document.querySelector('.start');
+
+const gameSectionRef = document.querySelector('.wrapper');
+
+const mainScreenRef = document.querySelector('.main');
+
+const againBtnRef = document.querySelector('.again');
+
+const menuBtnRef = document.querySelector('.menu');
+
+const backMusicRef = document.querySelector('.BackMusic');
+
+const exitBtnMenu = document.querySelector('.exit_btn');
+
+const testBtnRef = document.querySelector('.testbtn');
+
 
 let cardRef;
 let doubledCardRef;
@@ -56,21 +75,14 @@ let doubledContentDivRef;
 let firstCard;
 let secondCard;
 let flipedCard = false;
-let startTime = 10;
+let startTime = 90;
 const arrayFlipCards = [];
+doubleArrayCards.length = 6;
 arrayCards.length = 6;
 
 // !!!!!!!!!!!!Functions!!!!!!!!!!!!!
 
 // !!!!!!!!!!!!!!Render cards!!!!!!!!!!!!!
-
-// !!!!!!!!!!!Music site!!!!!!!!!!!!!!
-  musicRef.currentTime = 0;
-  musicRef.play();
-  musicRef.volume = 0.28;
-  volumeRangeRef.value = 20;
-
-// !!!!!!!!!!!Music site!!!!!!!!!!!!!!
 
 const RenderCardsFn = (arrayCards) => {
   const result = arrayCards.map((item) => {
@@ -124,11 +136,15 @@ console.log(RenderCardsFn(arrayCards));
 // !!!!!!!!!!!!!!!!Game logic!!!!!!!!!!!!!!!!!!
 
 const openCard = (item) => {
+  // if (flipCard) {
+  //   return;
+  // }
   audioEffectRef.play();
   audioEffectRef.volume = 0.5;
   item.parentNode.classList.add("rotate--card");
   item.parentNode.classList.add("pointer0");
   item.parentNode.parentNode.classList.add("pointer0");
+  flipCard = true;
 };
 
 const closeCard = (item) => {
@@ -138,6 +154,7 @@ const closeCard = (item) => {
     item.parentNode.classList.remove("pointer0");
     item.parentNode.parentNode.classList.remove("pointer0");
     flipedCard = false;
+    flipCard = false;
   }, 500);
 };
 
@@ -152,11 +169,7 @@ const onClick = (event) => {
   if (arrayFlipCards.length === 2) {
     firstCard = +arrayFlipCards[0].lastElementChild.dataset.index;
     secondCard = +arrayFlipCards[1].lastElementChild.dataset.index;
-    console.log("перша картка", firstCard);
-    console.log("Друга картка", secondCard);
     flipedCard = true;
-    console.log(flipedCard);
-    console.log(arrayFlipCards);
     if (firstCard === secondCard) {
       getPairCards(arrayFlipCards[0], arrayFlipCards[1]);
     } else {
@@ -189,8 +202,6 @@ const inCorrectPairCards = (Card1, Card2) => {
 
 
 rootRef.addEventListener("click", onClick);
-console.log(flipedCard);
-console.log('global', arrayFlipCards);
 
 // !!!!!!!!!!!Timer!!!!!!!!!!
 
@@ -200,45 +211,6 @@ const timer = () => {
   secRef.textContent = `: ${startTime % 60}`;
 
 };
-
-const timerId = setInterval(() => {
-  timer();
-  if (startTime === 60) {
-    minRef.style.color = 'red';
-    secRef.style.color = 'red';
-  }
-  if (startTime === 0) {
-    endTimeRef.play();
-    minRef.textContent = ` 00`;
-    secRef.textContent = `: 00`;
-    clearInterval(timerId);
-    modalEndGameRef.classList.add('show_icon');
-    modalVideoRef.play();
-    const show_btn = setInterval(() => {
-      boxButtonsRef.classList.add("show_icon")
-      clearInterval(show_btn);
-  }, 4000)
-  }
-}, 1000)
-
-// if (startTime === 10) {
-//   minRef.style.color = 'red';
-//   secRef.style.color = 'red';
-// }
-
-// if (startTime === 0) {
-//   endTimeRef.play();
-//   minRef.textContent = ` 00`;
-//   secRef.textContent = `: 00`;
-//   // clearInterval(timerId);
-//   modalEndGameRef.classList.add('show_icon');
-//   console.log(modalEndGameRef)
-//   modalVideoRef.play();
-//   const show_btn = setInterval(() => {
-//     boxButtonsRef.classList.add("show_icon")
-//     clearInterval(show_btn);
-// }, 4000)
-// }
 
 // !!!!!!!!!!!!!!!!Volume icon Function!!!!!!!!!!!!!!!!
 
@@ -284,3 +256,68 @@ const getRangeVolume = () => {
 
 divWrapperRef.addEventListener('click', onClickVolumeIcon);
 volumeRangeRef.addEventListener('input', getRangeVolume);
+
+
+// !!!!!!!!!!!!!!start game!!!!!!!!!!!!!!
+
+const startGame = () => {
+  musicRef.play();
+  musicRef.volume = 0.28;
+  volumeRangeRef.value = 20;
+  mainScreenRef.classList.add('close_icon');
+  gameSectionRef.classList.add('show_icon');
+  const timerId = setInterval(() => {
+    timer();
+    if (startTime === 60) {
+      minRef.style.color = 'red';
+      secRef.style.color = 'red';
+    }
+    if (startTime === 0) {
+      musicRef.pause();
+      endTimeRef.play();
+      minRef.textContent = ` 00`;
+      secRef.textContent = `: 00`;
+      clearInterval(timerId);
+      modalEndGameRef.classList.add('show_icon');
+      modalVideoRef.play();
+      const show_btn = setInterval(() => {
+        boxButtonsRef.classList.add("show_icon")
+        clearInterval(show_btn);
+    }, 4000)
+    }
+  }, 1000)
+};
+
+const tryAgainGame = () => {
+  modalEndGameRef.classList.remove('show_icon');
+  modalEndGameRef.classList.add('close_icon');
+  window.location.reload();
+  startGameBtnRef.onClick = startGame;
+
+};
+
+const goMenuFn = () => {
+  modalEndGameRef.classList.remove('show_icon');
+  modalEndGameRef.classList.add('close_icon');
+  mainScreenRef.classList.remove('close_icon');
+  gameSectionRef.classList.remove('show_icon');
+  mainScreenRef.classList.add('show_icon');
+  gameSectionRef.classList.add('close_icon');
+  window.location.reload();
+};
+
+const playMusicFn = () => {
+  backMusicRef.volume = 0.30;
+  backMusicRef.play()
+};
+
+  const loadFn = () => {
+    testBtnRef.onClick = playMusicFn;
+  };
+ window.addEventListener('load', loadFn)
+
+
+startGameBtnRef.addEventListener('click', startGame);
+againBtnRef.addEventListener('click', tryAgainGame);
+menuBtnRef.addEventListener('click', goMenuFn);
+exitBtnMenu.addEventListener('click', goMenuFn);
