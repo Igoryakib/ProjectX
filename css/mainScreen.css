@@ -25,6 +25,21 @@
  position: absolute;
  z-index: 99;
 }
+
+.h4_title {
+    color: rgba(228, 189, 189, 0.2);
+color: radial-gradient(circle, rgba(223, 192, 192, 0) 3%, rgba(156,156,156,0.639093137254902) 93%);
+    font-weight: 800;
+    font-size: 35px;
+    text-align: center;
+}
+
+.wrapper_titleBtn {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+}
+
 .main_title_wrapper{
     width: 309px;
     display: block;
@@ -36,6 +51,7 @@
     transform: translate(-50%, -5%);  
     animation: appearTitle 3s linear 1s;
     opacity: 0;
+    cursor: pointer;
 }
 
 @keyframes appearTitle {

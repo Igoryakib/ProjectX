@@ -24,10 +24,10 @@
 
 .btn_box {
     position: absolute;
-    bottom: 6%;
+    bottom: 5%;
     z-index: 4;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 600px;
     opacity: 0;

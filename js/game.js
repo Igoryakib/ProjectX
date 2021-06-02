@@ -57,16 +57,23 @@ const gameSectionRef = document.querySelector('.wrapper');
 
 const mainScreenRef = document.querySelector('.main');
 
-const againBtnRef = document.querySelector('.again');
-
 const menuBtnRef = document.querySelector('.menu');
 
 const backMusicRef = document.querySelector('.BackMusic');
 
 const exitBtnMenu = document.querySelector('.exit_btn');
 
-const testBtnRef = document.querySelector('.testbtn');
+const boxVicButtonsRef = document.querySelector(".button_box");
 
+const victoryModalRef = document.querySelector('.victory_modal');
+
+const victoryVideoRef = document.querySelector('.victory_video');
+
+const vicBtnAgainRef = document.querySelector('.vic_again');
+
+const vicBtnMenurRef = document.querySelector('.vic_menu');
+
+const titleClickRef = document.querySelector('.main_title_wrapper');
 
 let cardRef;
 let doubledCardRef;
@@ -77,8 +84,10 @@ let secondCard;
 let flipedCard = false;
 let startTime = 90;
 const arrayFlipCards = [];
+const arrayCorrectCards = [];
 doubleArrayCards.length = 6;
 arrayCards.length = 6;
+let timerId;
 
 // !!!!!!!!!!!!Functions!!!!!!!!!!!!!
 
@@ -136,15 +145,11 @@ console.log(RenderCardsFn(arrayCards));
 // !!!!!!!!!!!!!!!!Game logic!!!!!!!!!!!!!!!!!!
 
 const openCard = (item) => {
-  // if (flipCard) {
-  //   return;
-  // }
   audioEffectRef.play();
   audioEffectRef.volume = 0.5;
   item.parentNode.classList.add("rotate--card");
   item.parentNode.classList.add("pointer0");
   item.parentNode.parentNode.classList.add("pointer0");
-  flipCard = true;
 };
 
 const closeCard = (item) => {
@@ -154,7 +159,6 @@ const closeCard = (item) => {
     item.parentNode.classList.remove("pointer0");
     item.parentNode.parentNode.classList.remove("pointer0");
     flipedCard = false;
-    flipCard = false;
   }, 500);
 };
 
@@ -172,10 +176,24 @@ const onClick = (event) => {
     flipedCard = true;
     if (firstCard === secondCard) {
       getPairCards(arrayFlipCards[0], arrayFlipCards[1]);
+      arrayCorrectCards.push(arrayFlipCards[0], arrayFlipCards[1]);
     } else {
       inCorrectPairCards(arrayFlipCards[0], arrayFlipCards[1]);
     }
-    return 
+  }
+  if (arrayCorrectCards.length === 12) {
+    startTime = 0;
+    clearInterval(timerId);
+    minRef.textContent = ` 00`;
+    secRef.textContent = `: 00`;
+    musicRef.pause();
+    victoryModalRef.classList.add("show_icon");
+    victoryVideoRef.volume = 0.4;
+    victoryVideoRef.play();
+    const show_button = setInterval(() => {
+      boxVicButtonsRef.classList.add("show_icon");
+        clearInterval(show_button);
+    }, 15000)
   }
 };
 
@@ -212,6 +230,72 @@ const timer = () => {
 
 };
 
+// !!!!!!!!!!!Timer!!!!!!!!!!
+
+// !!!!!!!!!!!!!!start game!!!!!!!!!!!!!!
+
+const startGame = () => {
+  backMusicRef.pause();
+  musicRef.play();
+  musicRef.volume = 0.28;
+  volumeRangeRef.value = 20;
+  mainScreenRef.classList.add('close_icon');
+  gameSectionRef.classList.add('show_icon');
+  timerId = setInterval(() => {
+    timer();
+    if (startTime === 60) {
+      minRef.style.color = 'red';
+      secRef.style.color = 'red';
+    }
+    if (startTime === 0) {
+      arrayCorrectCards.splice(0);
+      musicRef.pause();
+      endTimeRef.play();
+      minRef.textContent = ` 00`;
+      secRef.textContent = `: 00`;
+      clearInterval(timerId);
+      modalEndGameRef.classList.add('show_icon');
+      modalVideoRef.play();
+      const show_btn = setInterval(() => {
+        boxButtonsRef.classList.add("show_icon")
+        clearInterval(show_btn);
+    }, 4000)
+    }
+  }, 1000)
+};
+
+// !!!!!!!!!!!!!!start game!!!!!!!!!!!!!!
+
+// !!!!!!!!!!!!!!!go menu btn!!!!!!!!!!!!!!!!!
+
+const vicGoMenuFn = () => {
+  backMusicRef.volume = 0.35;
+  victoryModalRef.classList.remove('show_icon');
+  victoryModalRef.classList.add('close_icon');
+  mainScreenRef.classList.remove('close_icon');
+  gameSectionRef.classList.remove('show_icon');
+  mainScreenRef.classList.add('show_icon');
+  gameSectionRef.classList.add('close_icon');
+  window.location.reload();
+};
+
+const goMenuFn = () => {
+  modalEndGameRef.classList.remove('show_icon');
+  modalEndGameRef.classList.add('close_icon');
+  mainScreenRef.classList.remove('close_icon');
+  gameSectionRef.classList.remove('show_icon');
+  mainScreenRef.classList.add('show_icon');
+  gameSectionRef.classList.add('close_icon');
+  window.location.reload();
+};
+
+// !!!!!!!!!!!!!!!go menu btn!!!!!!!!!!!!!!!!!
+
+startGameBtnRef.addEventListener('click', startGame);
+menuBtnRef.addEventListener('click', goMenuFn);
+exitBtnMenu.addEventListener('click', goMenuFn);
+vicBtnMenurRef.addEventListener('click', vicGoMenuFn);
+
 // !!!!!!!!!!!!!!!!Volume icon Function!!!!!!!!!!!!!!!!
 
 const onClickVolumeIcon = (event) => {
@@ -237,7 +321,6 @@ const onClickVolumeIcon = (event) => {
 
 const getRangeVolume = () => {
   musicRef.volume = volumeRangeRef.value / 100;
-  console.log(musicRef.volume)
   if (musicRef.volume === 0) {
       volumeRef.classList.add('close_icon');
       volumeRef.classList.remove('show_icon');
@@ -257,67 +340,9 @@ const getRangeVolume = () => {
 divWrapperRef.addEventListener('click', onClickVolumeIcon);
 volumeRangeRef.addEventListener('input', getRangeVolume);
 
+// !!!!!!!!!!!!!!!!Volume icon Function!!!!!!!!!!!!!!!!
 
-// !!!!!!!!!!!!!!start game!!!!!!!!!!!!!!
-
-const startGame = () => {
-  musicRef.play();
-  musicRef.volume = 0.28;
-  volumeRangeRef.value = 20;
-  mainScreenRef.classList.add('close_icon');
-  gameSectionRef.classList.add('show_icon');
-  const timerId = setInterval(() => {
-    timer();
-    if (startTime === 60) {
-      minRef.style.color = 'red';
-      secRef.style.color = 'red';
-    }
-    if (startTime === 0) {
-      musicRef.pause();
-      endTimeRef.play();
-      minRef.textContent = ` 00`;
-      secRef.textContent = `: 00`;
-      clearInterval(timerId);
-      modalEndGameRef.classList.add('show_icon');
-      modalVideoRef.play();
-      const show_btn = setInterval(() => {
-        boxButtonsRef.classList.add("show_icon")
-        clearInterval(show_btn);
-    }, 4000)
-    }
-  }, 1000)
-};
-
-const tryAgainGame = () => {
-  modalEndGameRef.classList.remove('show_icon');
-  modalEndGameRef.classList.add('close_icon');
-  window.location.reload();
-  startGameBtnRef.onClick = startGame;
-
-};
-
-const goMenuFn = () => {
-  modalEndGameRef.classList.remove('show_icon');
-  modalEndGameRef.classList.add('close_icon');
-  mainScreenRef.classList.remove('close_icon');
-  gameSectionRef.classList.remove('show_icon');
-  mainScreenRef.classList.add('show_icon');
-  gameSectionRef.classList.add('close_icon');
-  window.location.reload();
-};
-
-const playMusicFn = () => {
-  backMusicRef.volume = 0.30;
-  backMusicRef.play()
-};
-
-  const loadFn = () => {
-    testBtnRef.onClick = playMusicFn;
-  };
- window.addEventListener('load', loadFn)
-
-
-startGameBtnRef.addEventListener('click', startGame);
-againBtnRef.addEventListener('click', tryAgainGame);
-menuBtnRef.addEventListener('click', goMenuFn);
-exitBtnMenu.addEventListener('click', goMenuFn);
+titleClickRef.addEventListener('click', ()=> {
+  backMusicRef.volume = 0.35;
+  backMusicRef.play();
+})

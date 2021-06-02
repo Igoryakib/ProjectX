@@ -161,11 +161,6 @@
     position: relative;
 }
 
-.testbtn {
-    opacity: 0;
-    visibility: hidden;
-}
-
 .exit_btn {
     width: 50px;
     height: auto;
