@@ -1,0 +1,178 @@
+@import url('./reset.css');
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../img/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    pointer-events: none;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.wrapper__root__wrapper__cards {
+    width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: -20px;
+    transition: linear 200ms;
+    pointer-events: none;
+}
+
+.root__wrapper__cards__card {
+    perspective: 500px;
+    width: 140px;
+    height: 220px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.root__wrapper__cards__card__content {
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    pointer-events: initial;
+}
+
+.root__wrapper__cards__card__content__frontSide {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility:hidden;
+    transform: rotateY( 180deg );
+    border-radius: 5px;
+    border: 2px solid #fff;
+}
+
+.root__wrapper__cards__card__content__backSide {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility:hidden;
+    border-radius: 5px;
+    border: 2px solid #fff;
+}
+
+.rotate--card {
+    transform: rotateY( 180deg ) ;
+    transition: transform 0.5s;
+}
+
+.wrapper__music {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: initial;
+}
+
+.background_music {
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    transition: linear 200ms;
+    position: absolute;
+    margin-left: -110px;
+}
+
+.background_music_muted {
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: linear 200ms;
+    position: absolute;
+    margin-left: -110px;
+}
+
+.show_icon {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
+    z-index: 99;
+    transition: linear 200ms;
+}
+
+.close_icon {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    z-index: 1;
+    transition: linear 200ms;
+}
+
+#volume_level {
+    margin-left: 110px;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: linear 200ms;
+    cursor: pointer;
+}
+
+.wrapper__music:hover #volume_level {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
+}
+
+.pointer0 {
+    pointer-events: none;
+}
+
+.wrapper_timer {
+    width: 175px;
+    margin: 0 auto;
+    position: absolute;
+    top: 8%;
+    right: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #fff;
+}
+
+.wrapper_clock {
+    width: 80px;
+    margin: 0 auto;
+}
+
+.time {
+    font-size: 25px;
+    color: #fff;
+}
+
+.game_main {
+    position: relative;
+}
+
+.exit_btn {
+    width: 50px;
+    height: auto;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    cursor: pointer;
+}
+
+.img_exit {
+    width: 50px;
+    height: auto;
+}

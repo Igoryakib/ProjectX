@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+@import "./reset.css";
+.video {
+    width: 900px;
+    height: auto;
+    border-radius: 25px;
+    border: 2px solid #fff;
+}
+
+.btn {
+    font-family: 'Krona One', sans-serif;
+    border: 0;
+    padding: 10px 30px;
+    background-color: yellow;
+    font-weight: 700;
+    font-size: 30px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.btn:last-child {
+    margin-right: 0;
+}
+
+.btn_box {
+    position: absolute;
+    bottom: 5%;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition-duration: 500ms;
+}
+
+.btn:hover {
+    background-color: red;
+    transition: 650ms;
+}
+
+.modalEndGame {
+    position: relative;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(218, 177, 177);
+    background: radial-gradient(circle, rgba(218, 177, 177, 0) 3%, rgba(156, 156, 156, 0.639093137254902) 93%);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+#myModal {
+    position: absolute;
+}
+
+.modal_content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: auto;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.show_icon {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
+    z-index: 99;
+    transition: linear 500ms;
+}
